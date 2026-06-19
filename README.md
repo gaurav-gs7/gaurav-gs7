@@ -19,7 +19,7 @@ Suggested filename: README.md inside a repository named exactly: gaurav-gs7
     <img src="https://img.shields.io/badge/LinkedIn-Gaurav%20G%20S-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
   <a href="https://medium.com/@ngs.gaurav7195">
-    <img src="https://img.shields.io/badge/@ngs.gaurav7195%20Notes-000000?style=for-the-badge&logo=medium&logoColor=white" />
+    <img src="https://img.shields.io/badge/@ngs.gaurav7195-000000?style=for-the-badge&logo=medium&logoColor=white" />
   </a>
 </p>
 
