@@ -174,13 +174,13 @@ worker coordination, scheduling, and failure recovery.
 <div align="center">
 
 ### Languages
-<img src="https://skillicons.dev/icons?i=go,python,bash,js,ts" />
+<img src="https://skillicons.dev/icons?i=go,python,bash" />
 
 ### Infra / Platform
 <img src="https://skillicons.dev/icons?i=docker,kubernetes,terraform,githubactions,nginx,linux" />
 
 ### Data / Messaging
-<img src="https://skillicons.dev/icons?i=postgres,redis,kafka" />
+<img src="https://skillicons.dev/icons?i=postgres,redis,kafka,rabbitmq" />
 
 ### Cloud / DevOps
 <img src="https://skillicons.dev/icons?i=aws,gcp,git,github,vscode" />
