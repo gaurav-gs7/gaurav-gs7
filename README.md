@@ -18,7 +18,7 @@ Suggested filename: README.md inside a repository named exactly: gaurav-gs7
   <a href="https://www.linkedin.com/in/gaurav-g-s-9a7495180/">
     <img src="https://img.shields.io/badge/LinkedIn-Gaurav%20G%20S-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
-  <a href="mailto:ngs.gaurav.anaxagoras7@gmail.com">
+  <a href="mailto:ngs.gaurav7195@gmail.com">
     <img src="https://img.shields.io/badge/Gmail-ngs.gaurav.anaxagoras7%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
   <a href="https://medium.com/@ngs.gaurav7195">
