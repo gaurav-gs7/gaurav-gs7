@@ -192,25 +192,6 @@ worker coordination, scheduling, and failure recovery.
 
 ---
 
-## 🧩 Systems I Like Building
-
-```mermaid
-flowchart LR
-    A[Observability Signals] --> B[Incident Manager]
-    B --> C[Deterministic RCA Engine]
-    C --> D[LLM Advisory Layer]
-    C --> E[Policy Engine]
-    E --> F{Risk Decision}
-    F -->|Allow| G[Typed Remediation Handler]
-    F -->|Approval| H[Human Gate]
-    F -->|Deny| I[Audit Evidence]
-    H --> G
-    G --> J[Verification]
-    J --> K[Postmortem / Runbook Update]
-```
-
----
-
 ## 📌 Engineering Principles
 
 - **Do not put LLMs in the correctness path**
