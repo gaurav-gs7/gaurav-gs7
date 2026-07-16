@@ -1,13 +1,8 @@
-<!--
-Profile README for: github.com/gaurav-gs7
-Suggested filename: README.md inside a repository named exactly: gaurav-gs7
--->
-
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:0F172A,50:1E40AF,100:14B8A6&text=Gaurav%20G%20S&fontColor=FFFFFF&fontSize=46&fontAlignY=38&desc=SRE%20%7C%20Platform%20Engineering%20%7C%20AI%20Infra%20%7C%20AIOps&descAlignY=60&animation=fadeIn" />
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=2800&pause=800&color=38BDF8&center=true&vCenter=true&width=900&lines=Building+AI-native+Reliability+Platforms;Deterministic+RCA+%7C+Safe+Remediation+%7C+Observability;Kubernetes+%7C+Distributed+Systems+%7C+LLMOps+Guardrails)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=2800&pause=800&color=38BDF8&center=true&vCenter=true&width=900&lines=I+build+reliability+and+platform+systems;I+care+about+failure+modes%2C+clear+boundaries%2C+and+good+evidence;Currently+working+on+AI+infrastructure+and+release+safety)](https://git.io/typing-svg)
 
 </div>
 
@@ -32,22 +27,19 @@ Suggested filename: README.md inside a repository named exactly: gaurav-gs7
 
 ## 👋 About Me
 
-I am building toward **SRE / Platform Engineering / AI Infrastructure / AIOps / LLMOps** roles by creating production-style systems around:
+I build reliability and platform systems, usually around the points where failures
+become hard to explain: an alert turns into an incident, a worker disappears with
+a task, a rollout crosses an SLO boundary, or an AI agent asks to run a risky tool.
 
-- **AI-assisted incident intelligence**
-- **deterministic root-cause analysis**
-- **safe auto-remediation**
-- **Kubernetes reliability**
-- **durable workflow orchestration**
-- **agent/tool-call governance**
-- **observability, SLOs, policy gates, and auditability**
+I like working close to those mechanics—leases, retries, duplicate delivery,
+idempotency, audit records, and rollback state. My recent projects cover incident
+response, Kubernetes delivery, workflow orchestration, AWS deployments, inference
+release checks, and tool-call safety.
 
-I care about building systems where AI helps operators move faster, but **does not blindly mutate production**.
+The rule I try to follow is:
 
-```txt
-Core principle:
-LLMs can explain. Deterministic systems should decide. Policy should gate. Audits should prove.
-```
+> AI can help explain the evidence. Deterministic code should make the decision,
+> policy should control mutations, and the audit trail should show what happened.
 
 ---
 
@@ -58,21 +50,19 @@ LLMs can explain. Deterministic systems should decide. Policy should gate. Audit
 <td width="50%">
 
 ### Reliability Engineering
-- Incident lifecycle automation
-- SLOs, error budgets, rollout safety
-- RCA pipelines and remediation controls
-- Alert deduplication and evidence collection
-- Runbooks, postmortems, failure-mode design
+- Incident intake, grouping, and recovery
+- SLO-aware rollout and rollback decisions
+- Durable state, retries, leases, and stale work
+- Runbooks and evidence that can be reproduced
 
 </td>
 <td width="50%">
 
-### AI Infrastructure / LLMOps
-- AI-assisted SRE workflows
-- Agent tool-call safety
-- MCP runtime guardrails
-- LLM evaluation for RCA/remediation
-- Tracing, auditability, and governance for AI systems
+### AI Infrastructure
+- Release checks for inference changes
+- Safe boundaries around agent tool calls
+- Evaluation, tracing, and provenance
+- Keeping models out of authorization paths
 
 </td>
 </tr>
@@ -82,141 +72,105 @@ LLMs can explain. Deterministic systems should decide. Policy should gate. Audit
 
 ## 🧠 Featured Projects
 
-These are the projects I would most enjoy discussing in an interview—the design
-choices, the failure cases, and the parts that still need work.
+Here are the projects I have spent the most time on. They are at different stages,
+and I have called out the unfinished parts where they matter.
 
 ### 1. [InferLab](https://github.com/gaurav-gs7/InferLab) — Release Checks for LLM Inference Changes
 
-I built InferLab because a benchmark can say that an inference change is faster
-without proving that the evidence is complete, comparable, or safe to release on.
-It checks that evidence first, then returns `PASS`, `BLOCK`, or `INCONCLUSIVE`.
+I built InferLab because a faster benchmark result is not automatically trustworthy
+release evidence. The model may be different, the workload may be too small, or the
+runtime and hardware may no longer match the baseline.
 
-The parts I care about most are:
-
-- Versioned contracts that identify the exact model, runtime, workload, and policy
-- Freshness, compatibility, coverage, and sample-sufficiency checks
-- Loss-aware adapters with cryptographic provenance
-- Re-verification of the smallest workload known to reproduce a failure
-- Content-addressed safety cases that can be replayed and signed with Ed25519
+InferLab checks those conditions before returning `PASS`, `BLOCK`, or
+`INCONCLUSIVE`. It uses versioned contracts, coverage and freshness checks,
+loss-aware adapters, counterexample re-verification, and replayable safety cases
+that can be signed with Ed25519.
 
 It is still pre-alpha. The public examples deliberately show `BLOCK` and
-`INCONCLUSIVE`; I do not claim a production `PASS` without real target-system
-evidence.
-
-**Keywords:** `AI Infrastructure` `LLM Inference` `Release Assurance` `Reliability` `Go` `Evidence Contracts` `Policy Gates` `Ed25519`
+`INCONCLUSIVE`; I do not claim a production `PASS` without evidence from the
+target system. The quickest way to inspect the full path is `make demo-safety-case`.
 
 ---
 
-### 2. [Argus](https://github.com/gaurav-gs7/Argus) — AI-Assisted SRE Control Plane
+### 2. [Argus](https://github.com/gaurav-gs7/Argus) — Incident Response Control Plane
 
-> Production-style AIOps platform for incident detection, deterministic RCA, and policy-gated remediation.
+Argus started with one constraint: an LLM should not decide whether production is
+changed. It can help explain an incident, but the evidence, policy, approval, and
+remediation path stay deterministic.
 
-**What it demonstrates**
+The system groups alerts into incidents, builds a timeline, runs deterministic RCA,
+and records remediation decisions in PostgreSQL. NATS JetStream carries work, while
+Prometheus, Grafana, Loki, and OpenTelemetry expose what the control plane is doing.
+The integration suite exercises real PostgreSQL grouping and audit behavior as well
+as JetStream delivery.
 
-- Alert ingestion and incident creation
-- Deterministic RCA before LLM explanation
-- Advisory-only LLM layer
-- Policy-gated remediation proposals
-- Typed and idempotent remediation handlers
-- PostgreSQL audit trail
-- NATS/Redis-backed infra workflow
-- Prometheus, Grafana, Loki, and OpenTelemetry integration
-
-**Positioning**
-
-```txt
-AI should not auto-fix production blindly.
-Argus investigates, explains, gates, audits, and only then remediates.
-```
-
-**Keywords:** `AIOps` `SRE` `Incident Response` `RCA` `Auto-Remediation` `Go` `Python` `PostgreSQL` `NATS` `Redis` `Prometheus` `Grafana` `OpenTelemetry`
+Run `make ci` for the local quality gate and `make integration-test` for the
+database and queue boundaries.
 
 ---
 
 ### 3. [CloudDock](https://github.com/gaurav-gs7/CloudDock) — AWS Deployment Control Plane
 
-CloudDock started with a question I kept coming back to: after a deployment goes
-wrong, can we prove exactly what changed, why it was allowed, how health was
-checked, and what the rollback restored?
+CloudDock came from a question I kept returning to: after a deployment goes wrong,
+can we prove what changed, why it was allowed, how health was checked, and exactly
+what the rollback restored?
 
-The project follows a GitHub revision through:
+It follows a GitHub revision through CodeBuild, ECR, ECS Fargate, ALB health checks,
+and Step Functions. DynamoDB conditional writes protect state transitions; KMS and
+team RBAC protect credentials and access. Each deployment produces a release
+passport tying together source identity, health evidence, audit events, cost, and
+rollback lineage.
 
-- CodeBuild, ECR, ECS Fargate, and ALB health checks
-- Step Functions orchestration and exact rollback lineage
-- DynamoDB conditional state transitions
-- KMS envelope encryption and team RBAC
-- Resumable logs, audit evidence, and a release passport for each deployment
-- AWS CDK infrastructure and a React/TypeScript interface
-
-The repository can synthesize its CDK stacks and run its local verification suite.
-That is implementation evidence, not a claim that I have already operated it as a
-production AWS service.
-
-**Keywords:** `Platform Engineering` `AWS` `ECS` `CodeBuild` `Step Functions` `DynamoDB` `Go` `React` `TypeScript` `AWS CDK`
+`make verify` runs the clean-clone gate and CDK synthesis. That proves the
+implementation is reproducible; it is not a claim that I have already operated
+CloudDock as a production AWS service.
 
 ---
 
-### 4. [Helios](https://github.com/gaurav-gs7/Helios) — Durable Workflow Orchestration Engine
+### 4. [Helios](https://github.com/gaurav-gs7/Helios) — Durable Workflow Orchestration
 
-> Mini distributed workflow control plane built from first principles.
+Helios is where I worked through the failure mechanics behind a distributed workflow
+engine. PostgreSQL is the source of truth, NATS is transport, and workers coordinate
+through registrations, heartbeats, leases, retries, and timeouts.
 
-**What it demonstrates**
+The interesting part is not drawing a DAG. It is deciding what happens when a lease
+expires, a worker finishes stale work, a retry budget is exhausted, or the control
+plane restarts. The PostgreSQL integration test covers those recovery paths against
+a real database.
 
-- DAG-based workflow execution
-- PostgreSQL as durable source of truth
-- NATS as transport
-- Worker registration and heartbeats
-- Lease-based scheduling
-- Retry/backoff and timeout recovery
-- Dead-worker recovery
-- At-least-once execution with idempotent handlers
-- AI-assisted planning and failure analysis
-
-**Positioning**
-
-```txt
-A mini Temporal-style orchestrator for learning durable execution,
-worker coordination, scheduling, and failure recovery.
-```
-
-**Keywords:** `Distributed Systems` `Workflow Engine` `Task Orchestration` `Go` `PostgreSQL` `NATS` `Worker Pool` `Leases` `Heartbeats` `Retries` `AI Infra`
+Run `make integration-test` to reproduce the lease-recovery checks.
 
 ---
 
 ### 5. [Sentinel](https://github.com/gaurav-gs7/Sentinel) — Kubernetes Reliability Platform
 
-> Kubernetes reliability platform focused on SLOs, rollout guards, production readiness, and incident automation.
+Sentinel combines a service catalog and golden path with SLO checks, error-budget
+gates, canary decisions, and a Kubernetes `RolloutGuard` controller. It generates
+deployment assets with Kustomize and Argo CD patterns and records the workflow state
+behind readiness and rollout decisions.
 
-**What it demonstrates**
+One boundary is intentionally explicit: the embedded workflow runner persists
+snapshots, but it is not yet crash-resumable from the last completed step. Persistence
+failures now stop the operation instead of being ignored.
 
-- Kubernetes production-readiness checks
-- SLO and error-budget thinking
-- Progressive delivery and rollout safety
-- Canary and rollback workflows
-- Grafana/Alertmanager/OpenTelemetry integration
-- Terraform, Argo CD, Kustomize, and GitHub Actions patterns
-- Runbook and postmortem automation
-
-**Keywords:** `Kubernetes` `SRE` `Platform Engineering` `SLO` `Canary` `Progressive Delivery` `Terraform` `Argo CD` `GitOps` `Observability`
+The root CI gate runs formatting, vet, race tests, builds, CRD rendering, and
+controller rendering.
 
 ---
 
-### 6. [MCP-Guard](https://github.com/gaurav-gs7/MCP-Guard) — Runtime Firewall for AI Agent Tool Calls
+### 6. [MCP-Guard](https://github.com/gaurav-gs7/MCP-Guard) — Guardrails for Agent Tool Calls
 
-> Reliability and safety layer for MCP servers and AI-agent tool invocation.
+MCP-Guard is a smaller project with a narrow job: sit between an agent and its tools,
+then make the risky parts visible and controllable. It applies allowlist policy,
+signed approvals, redaction, rate limits, kill switches, and audit logging before a
+tool call is allowed through.
 
-**What it demonstrates**
+The dashboard requires bearer authentication when it is exposed beyond loopback,
+and the test suite covers the HTTP boundary as well as adversarial inputs. The
+current gateway is still a local JSON-RPC stdio implementation, not a distributed
+production MCP gateway.
 
-- MCP tool-call proxying
-- Policy-as-code for tool access
-- Risk scoring and approval tokens
-- Redaction of secrets and sensitive payloads
-- Kill switches and rate limits
-- Audit evidence for agent actions
-- OpenTelemetry/OpenInference-compatible traces
-- Adversarial safety evaluations
-
-**Keywords:** `MCP` `Model Context Protocol` `AI Agents` `LLMOps` `Agent Security` `Tool Calling` `Policy Engine` `Guardrails` `OpenTelemetry`
+Run `PYTHONPATH=src python3 -m unittest discover -s tests -v` to exercise it.
 
 ---
 
@@ -240,26 +194,30 @@ worker coordination, scheduling, and failure recovery.
 
 ---
 
-## 📌 Engineering Principles
+## 📌 How I Think About Reliability
 
-- **Do not put LLMs in the correctness path**
-- Prefer **deterministic evidence** before AI explanation
-- Treat queues as transport, not truth
-- Design handlers to be **typed, idempotent, and auditable**
-- Build for failure: retries, leases, timeouts, crash recovery
-- Observe everything: metrics, logs, traces, dashboards
-- Gate production mutations through policy and approval
-- Write runbooks before pretending something is production-grade
+- If state cannot be persisted, the operation should fail instead of pretending it
+  succeeded.
+- A database is authoritative state; a queue is transport and may deliver twice.
+- Retries, lease expiry, stale work, and partial failure belong in the normal design.
+- Production mutations need explicit policy and approval boundaries.
+- Logs and dashboards are useful, but reproducible evidence and audit records are
+  what let someone verify a claim later.
+- I would rather document a limitation clearly than call an unfinished system
+  production-ready.
 
 ---
 
-## 📚 What I Am Publishing / Building Next
+## 📚 What I Am Working On Next
 
-- Medium article: **AI Should Not Auto-Fix Production Blindly — So I Built a Deterministic SRE Control Plane**
-- Argus live demo with Grafana screenshots and incident evidence
-- LLM evaluation suite for RCA and remediation safety
-- Kubernetes remediation scenario with SLO-aware canary verification
-- VPS-hosted AI SRE lab with CI/CD, TLS, monitoring, and backups
+- Run InferLab against a pinned inference stack and publish the raw baseline and
+  candidate evidence.
+- Record a fresh Argus failure demo from alert ingestion through recovery and audit
+  closure.
+- Add a kind-based controller test to Sentinel for status updates, events, and
+  rollback behavior.
+- Complete CloudDock's AWS acceptance matrix with deployment, rollback, teardown,
+  timing, and cost evidence.
 
 ---
 
@@ -280,17 +238,16 @@ worker coordination, scheduling, and failure recovery.
 
 ## 🤝 Open To
 
-- SRE / Production Engineering roles
-- Platform Engineering roles
-- System Development Engineer roles
-- AI Infrastructure / AIOps / LLMOps roles
-- Teams building reliability platforms, observability systems, agent infrastructure, or production automation
+I am interested in SRE, production engineering, platform engineering, systems
+development, and AI-infrastructure roles—especially work involving control planes,
+distributed failure handling, release safety, observability, or reliable agent
+infrastructure.
 
 ---
 
 <div align="center">
 
-### Building systems where AI helps operators move faster — safely.
+### I like systems that stay understandable when they fail.
 
 <img src="https://capsule-render.vercel.app/api?type=waving&height=110&color=0:14B8A6,50:1E40AF,100:0F172A&section=footer" />
 
