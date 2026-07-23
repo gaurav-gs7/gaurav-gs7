@@ -82,32 +82,47 @@ LLMs can explain. Deterministic systems should decide. Policy should gate. Audit
 
 ## 🧠 Featured Projects
 
-These are the projects I would most enjoy discussing in an interview—the design
-choices, the failure cases, and the parts that still need work.
+These are the five projects I would most enjoy discussing in an interview—the
+design choices, the failure cases, and the parts that still need work.
 
-### 1. [InferLab](https://github.com/gaurav-gs7/InferLab) — Release Checks for LLM Inference Changes
+### 1. [Verdikt](https://github.com/gaurav-gs7/Verdikt) — Runtime Guardrails for AI Agent Tool Calls
 
-I built InferLab because a benchmark can say that an inference change is faster
-without proving that the evidence is complete, comparable, or safe to release on.
-It checks that evidence first, then returns `PASS`, `BLOCK`, or `INCONCLUSIVE`.
+> Reliability and safety layer for MCP servers and AI-agent tool invocation.
 
-The parts I care about most are:
+**What it demonstrates**
 
-- Versioned contracts that identify the exact model, runtime, workload, and policy
-- Freshness, compatibility, coverage, and sample-sufficiency checks
-- Loss-aware adapters with cryptographic provenance
-- Re-verification of the smallest workload known to reproduce a failure
-- Content-addressed safety cases that can be replayed and signed with Ed25519
+- MCP tool-call proxying
+- Policy-as-code for tool access
+- Risk scoring and approval tokens
+- Redaction of secrets and sensitive payloads
+- Kill switches and rate limits
+- Audit evidence for agent actions
+- OpenTelemetry/OpenInference-compatible traces
+- Adversarial safety evaluations
 
-It is still pre-alpha. The public examples deliberately show `BLOCK` and
-`INCONCLUSIVE`; I do not claim a production `PASS` without real target-system
-evidence.
-
-**Keywords:** `AI Infrastructure` `LLM Inference` `Release Assurance` `Reliability` `Go` `Evidence Contracts` `Policy Gates` `Ed25519`
+**Keywords:** `MCP` `Model Context Protocol` `AI Agents` `LLMOps` `Agent Security` `Tool Calling` `Policy Engine` `Guardrails` `OpenTelemetry`
 
 ---
 
-### 2. [Argus](https://github.com/gaurav-gs7/Argus) — AI-Assisted SRE Control Plane
+### 2. [Sentinel](https://github.com/gaurav-gs7/Sentinel) — Kubernetes Reliability Platform
+
+> Kubernetes reliability platform focused on SLOs, rollout guards, production readiness, and incident automation.
+
+**What it demonstrates**
+
+- Kubernetes production-readiness checks
+- SLO and error-budget thinking
+- Progressive delivery and rollout safety
+- Canary and rollback workflows
+- Grafana/Alertmanager/OpenTelemetry integration
+- Terraform, Argo CD, Kustomize, and GitHub Actions patterns
+- Runbook and postmortem automation
+
+**Keywords:** `Kubernetes` `SRE` `Platform Engineering` `SLO` `Canary` `Progressive Delivery` `Terraform` `Argo CD` `GitOps` `Observability`
+
+---
+
+### 3. [Argus](https://github.com/gaurav-gs7/Argus) — AI-Assisted SRE Control Plane
 
 > Production-style AIOps platform for incident detection, deterministic RCA, and policy-gated remediation.
 
@@ -133,32 +148,9 @@ Argus investigates, explains, gates, audits, and only then remediates.
 
 ---
 
-### 3. [CloudDock](https://github.com/gaurav-gs7/CloudDock) — AWS Deployment Control Plane
+### 4. [Helios](https://github.com/gaurav-gs7/Helios) — Distributed Systems Learning / Deep-Dive
 
-CloudDock started with a question I kept coming back to: after a deployment goes
-wrong, can we prove exactly what changed, why it was allowed, how health was
-checked, and what the rollback restored?
-
-The project follows a GitHub revision through:
-
-- CodeBuild, ECR, ECS Fargate, and ALB health checks
-- Step Functions orchestration and exact rollback lineage
-- DynamoDB conditional state transitions
-- KMS envelope encryption and team RBAC
-- Resumable logs, audit evidence, and a release passport for each deployment
-- AWS CDK infrastructure and a React/TypeScript interface
-
-The repository can synthesize its CDK stacks and run its local verification suite.
-That is implementation evidence, not a claim that I have already operated it as a
-production AWS service.
-
-**Keywords:** `Platform Engineering` `AWS` `ECS` `CodeBuild` `Step Functions` `DynamoDB` `Go` `React` `TypeScript` `AWS CDK`
-
----
-
-### 4. [Helios](https://github.com/gaurav-gs7/Helios) — Durable Workflow Orchestration Engine
-
-> Mini distributed workflow control plane built from first principles.
+> A learning and deep-dive project for studying distributed workflow mechanics—not a production-ready orchestration platform.
 
 **What it demonstrates**
 
@@ -175,48 +167,33 @@ production AWS service.
 **Positioning**
 
 ```txt
-A mini Temporal-style orchestrator for learning durable execution,
-worker coordination, scheduling, and failure recovery.
+A hands-on deep dive into durable execution, worker coordination,
+scheduling, and failure recovery—not a production claim.
 ```
 
 **Keywords:** `Distributed Systems` `Workflow Engine` `Task Orchestration` `Go` `PostgreSQL` `NATS` `Worker Pool` `Leases` `Heartbeats` `Retries` `AI Infra`
 
 ---
 
-### 5. [Sentinel](https://github.com/gaurav-gs7/Sentinel) — Kubernetes Reliability Platform
+### 5. [InferLab](https://github.com/gaurav-gs7/InferLab) — Release Checks for LLM Inference Changes
 
-> Kubernetes reliability platform focused on SLOs, rollout guards, production readiness, and incident automation.
+I built InferLab because a benchmark can say that an inference change is faster
+without proving that the evidence is complete, comparable, or safe to release on.
+It checks that evidence first, then returns `PASS`, `BLOCK`, or `INCONCLUSIVE`.
 
-**What it demonstrates**
+The parts I care about most are:
 
-- Kubernetes production-readiness checks
-- SLO and error-budget thinking
-- Progressive delivery and rollout safety
-- Canary and rollback workflows
-- Grafana/Alertmanager/OpenTelemetry integration
-- Terraform, Argo CD, Kustomize, and GitHub Actions patterns
-- Runbook and postmortem automation
+- Versioned contracts that identify the exact model, runtime, workload, and policy
+- Freshness, compatibility, coverage, and sample-sufficiency checks
+- Loss-aware adapters with cryptographic provenance
+- Re-verification of the smallest workload known to reproduce a failure
+- Content-addressed safety cases that can be replayed and signed with Ed25519
 
-**Keywords:** `Kubernetes` `SRE` `Platform Engineering` `SLO` `Canary` `Progressive Delivery` `Terraform` `Argo CD` `GitOps` `Observability`
+It is still pre-alpha. The public examples deliberately show `BLOCK` and
+`INCONCLUSIVE`; I do not claim a production `PASS` without real target-system
+evidence.
 
----
-
-### 6. [MCP-Guard](https://github.com/gaurav-gs7/MCP-Guard) — Runtime Firewall for AI Agent Tool Calls
-
-> Reliability and safety layer for MCP servers and AI-agent tool invocation.
-
-**What it demonstrates**
-
-- MCP tool-call proxying
-- Policy-as-code for tool access
-- Risk scoring and approval tokens
-- Redaction of secrets and sensitive payloads
-- Kill switches and rate limits
-- Audit evidence for agent actions
-- OpenTelemetry/OpenInference-compatible traces
-- Adversarial safety evaluations
-
-**Keywords:** `MCP` `Model Context Protocol` `AI Agents` `LLMOps` `Agent Security` `Tool Calling` `Policy Engine` `Guardrails` `OpenTelemetry`
+**Keywords:** `AI Infrastructure` `LLM Inference` `Release Assurance` `Reliability` `Go` `Evidence Contracts` `Policy Gates` `Ed25519`
 
 ---
 
