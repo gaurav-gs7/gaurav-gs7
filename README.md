@@ -85,7 +85,7 @@ LLMs can explain. Deterministic systems should decide. Policy should gate. Audit
 These are the five projects I would most enjoy discussing in an interview—the
 design choices, the failure cases, and the parts that still need work.
 
-### 1. [Verdikt](https://github.com/gaurav-gs7/Verdikt) — Runtime Guardrails for AI Agent Tool Calls
+### 1. [Judikt](https://github.com/gaurav-gs7/Judikt) — Runtime Guardrails for AI Agent Tool Calls
 
 > Reliability and safety layer for MCP servers and AI-agent tool invocation.
 
