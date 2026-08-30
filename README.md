@@ -217,44 +217,6 @@ evidence.
 
 ---
 
-## 📌 Engineering Principles
-
-- **Do not put LLMs in the correctness path**
-- Prefer **deterministic evidence** before AI explanation
-- Treat queues as transport, not truth
-- Design handlers to be **typed, idempotent, and auditable**
-- Build for failure: retries, leases, timeouts, crash recovery
-- Observe everything: metrics, logs, traces, dashboards
-- Gate production mutations through policy and approval
-- Write runbooks before pretending something is production-grade
-
----
-
-## 📚 What I Am Publishing / Building Next
-
-- Medium article: **AI Should Not Auto-Fix Production Blindly — So I Built a Deterministic SRE Control Plane**
-- Argus live demo with Grafana screenshots and incident evidence
-- LLM evaluation suite for RCA and remediation safety
-- Kubernetes remediation scenario with SLO-aware canary verification
-- VPS-hosted AI SRE lab with CI/CD, TLS, monitoring, and backups
-
----
-
-## 📊 GitHub Snapshot
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=gaurav-gs7&show_icons=true&hide_border=true&theme=tokyonight" />
-<img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=gaurav-gs7&hide_border=true&theme=tokyonight" />
-
-<br/>
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=gaurav-gs7&layout=compact&hide_border=true&theme=tokyonight" />
-
-</div>
-
----
-
 ## 🤝 Open To
 
 - SRE / Production Engineering roles
