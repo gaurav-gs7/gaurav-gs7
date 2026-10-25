@@ -8,9 +8,9 @@ Senior Site Reliability Engineer at Mastercard. Previously PhonePe, on UPI.
 
 [LinkedIn](https://www.linkedin.com/in/gaurav-g-s-9a7495180/) · [Medium](https://medium.com/@ngs.gaurav7195) · [Email](mailto:ngs.gaurav7195@gmail.com)
 
-Four years running payment and banking infrastructure: on-call, zero-downtime migrations, disaster-recovery drills, and the automation that makes them boring. On the side, I build open-source control planes that let AI take part in operations without taking the controls.
+Four years running payment and banking infrastructure at scale: container platforms, observability, on-call, zero-downtime migrations and disaster recovery. Now I build AI-native reliability platforms: incident correlation and root-cause analysis, durable remediation workflows, SLO-guarded rollouts, and guardrails for the AI agents that operate them.
 
-> LLMs advise. Deterministic systems decide. Policy gates. Audits prove.
+**Focus:** AI for SRE · Platform engineering · Infrastructure at scale · Observability
 
 ## Production work
 
