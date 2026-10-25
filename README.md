@@ -1,236 +1,60 @@
-<!--
-Profile README for: github.com/gaurav-gs7
-Suggested filename: README.md inside a repository named exactly: gaurav-gs7
--->
+<a href="https://gaurav-gs7.pages.dev"><img src="https://gaurav-gs7.pages.dev/og.jpg" alt="Gaurav G S, Senior Site Reliability Engineer: AI infrastructure and payments at scale. Visit gaurav-gs7.pages.dev" width="100%"></a>
 
-<div align="center">
+# Gaurav G S
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:0F172A,50:1E40AF,100:14B8A6&text=Gaurav%20G%20S&fontColor=FFFFFF&fontSize=46&fontAlignY=38&desc=SRE%20%7C%20Platform%20Engineering%20%7C%20AI%20Infra%20%7C%20AIOps&descAlignY=60&animation=fadeIn" />
+Senior Site Reliability Engineer at Mastercard. Previously PhonePe, on UPI.
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=2800&pause=800&color=38BDF8&center=true&vCenter=true&width=900&lines=Building+AI-native+Reliability+Platforms;Deterministic+RCA+%7C+Safe+Remediation+%7C+Observability;Kubernetes+%7C+Distributed+Systems+%7C+LLMOps+Guardrails)](https://git.io/typing-svg)
+**Portfolio: [gaurav-gs7.pages.dev](https://gaurav-gs7.pages.dev)**. Break a live payments stack and watch my projects heal it.
 
-</div>
+[LinkedIn](https://www.linkedin.com/in/gaurav-g-s-9a7495180/) · [Medium](https://medium.com/@ngs.gaurav7195) · [Email](mailto:ngs.gaurav7195@gmail.com)
 
-<p align="center">
-  <a href="https://github.com/gaurav-gs7">
-    <img src="https://img.shields.io/badge/GitHub-gaurav--gs7-181717?style=for-the-badge&logo=github" />
-  </a>
-  <a href="https://www.linkedin.com/in/gaurav-g-s-9a7495180/">
-    <img src="https://img.shields.io/badge/LinkedIn-Gaurav%20G%20S-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-  <a href="mailto:ngs.gaurav7195@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-ngs.gaurav7195@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
-  <a href="https://medium.com/@ngs.gaurav7195">
-    <img src="https://img.shields.io/badge/Medium-%40ngs.gaurav7195-000000?style=for-the-badge&logo=medium&logoColor=white" />
-  </a>
-</p>
+Four years running payment and banking infrastructure: on-call, zero-downtime migrations, disaster-recovery drills, and the automation that makes them boring. On the side, I build open-source control planes that let AI take part in operations without taking the controls.
 
----
+> LLMs advise. Deterministic systems decide. Policy gates. Audits prove.
 
-<img align="right" width="240" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" alt="systems engineering gif" />
+## Production work
 
-## 👋 About Me
+- **Mastercard** (Apr 2025 – now). Reliability for the FLS/BRAM platform, used by global banks in a business line worth $77M+ a year. Release automation in Jenkins and XLR, incident triage across Splunk, deployment and database signals, and recovery of corrupted financial data during incidents.
+- **PhonePe** (Aug 2022 – Apr 2025). Bank PSP infrastructure for UPI, on a platform handling 360M+ transactions a day. Migrated Yes Bank's PSP orchestration from Mesos to Drove and moved Axis Bank and Yes Bank between data centers, both with zero downtime. Made MariaDB backup verification 33% faster with SaltStack.
 
-I am building toward **SRE / Platform Engineering / AI Infrastructure / AIOps / LLMOps** roles by creating production-style systems around:
+## Projects
 
-- **AI-assisted incident intelligence**
-- **deterministic root-cause analysis**
-- **safe auto-remediation**
-- **Kubernetes reliability**
-- **durable workflow orchestration**
-- **agent/tool-call governance**
-- **observability, SLOs, policy gates, and auditability**
+### [Judikt](https://github.com/gaurav-gs7/Judikt): security gateway for AI agents using MCP
 
-I care about building systems where AI helps operators move faster, but **does not blindly mutate production**.
+Sits between AI agents and the tools they call. Every call passes policy-as-code, OAuth/JWT identity, risk scoring, human approvals, rate limits and kill switches, and lands in a hash-chained audit trail. Tool responses are treated as untrusted input. Ships AttackBench for testing prompt-injection defences.
 
-```txt
-Core principle:
-LLMs can explain. Deterministic systems should decide. Policy should gate. Audits should prove.
-```
+**Status:** v0.3.0 on [PyPI](https://pypi.org/project/judikt/) (`pip install judikt`). [How and why I built it](https://medium.com/@ngs.gaurav7195/i-built-verdikt-a-security-and-reliability-control-plane-for-ai-agents-using-mcp-2580b5835abc).
 
----
+### [Argus](https://github.com/gaurav-gs7/Argus): incident correlation and RCA, with AI kept advisory
 
-## 🚀 Current Focus
+Groups alerts into one incident by walking the service topology, then scores root causes deterministically before an LLM is allowed to explain anything. Fixes are typed, idempotent and policy-gated, and every decision is written to a PostgreSQL audit trail.
 
-<table>
-<tr>
-<td width="50%">
+**Stack:** Go, PostgreSQL, NATS, Redis, Prometheus, Grafana, Loki, OpenTelemetry
 
-### Reliability Engineering
-- Incident lifecycle automation
-- SLOs, error budgets, rollout safety
-- RCA pipelines and remediation controls
-- Alert deduplication and evidence collection
-- Runbooks, postmortems, failure-mode design
+### [Attesta](https://github.com/gaurav-gs7/Attesta): Kubernetes reliability control plane
 
-</td>
-<td width="50%">
+Onboards services with owners, SLOs, runbooks and rollback policy, scores their production readiness, guards progressive rollouts and rolls back when a release breaches its SLO. Generates the Terraform, Argo CD, Kustomize, alerting and tracing config a new service needs. (Formerly Sentinel.)
 
-### AI Infrastructure / LLMOps
-- AI-assisted SRE workflows
-- Agent tool-call safety
-- MCP runtime guardrails
-- LLM evaluation for RCA/remediation
-- Tracing, auditability, and governance for AI systems
+**Stack:** Go, Kubernetes, Argo CD, Terraform, Alertmanager, OpenTelemetry
 
-</td>
-</tr>
-</table>
+### [InferLab](https://github.com/gaurav-gs7/InferLab): release checks for LLM inference changes
 
----
+A benchmark can say an inference change is faster without proving the evidence is complete, comparable, or safe to release on. InferLab checks the evidence first, then returns `PASS`, `BLOCK` or `INCONCLUSIVE`: versioned contracts for the exact model, runtime and workload; freshness, coverage and sample-sufficiency checks; re-verification of the smallest workload that reproduces a failure; and replayable safety cases signed with Ed25519.
 
-## 🧠 Featured Projects
+**Status:** pre-alpha. The public examples deliberately show `BLOCK` and `INCONCLUSIVE`; I don't claim a production `PASS` without real target-system evidence.
 
-These are the five projects I would most enjoy discussing in an interview—the
-design choices, the failure cases, and the parts that still need work.
+### [Helios](https://github.com/gaurav-gs7/Helios): durable workflow engine (learning project)
 
-### 1. [Judikt](https://github.com/gaurav-gs7/Judikt) — Runtime Guardrails for AI Agent Tool Calls
+A hands-on deep dive into durable execution: DAG workflows with PostgreSQL as the source of truth and NATS for dispatch, worker leases and heartbeats, retries with backoff, and dead-worker recovery. Built to learn the mechanics, not a production claim.
 
-> Reliability and safety layer for MCP servers and AI-agent tool invocation.
+## Stack
 
-**What it demonstrates**
+- **Languages:** Go, Python, Bash
+- **Platform:** Linux, Kubernetes, Docker, Terraform, Argo CD, GitHub Actions, Jenkins, Nginx, HAProxy
+- **Data:** PostgreSQL, MariaDB, Redis, NATS, ZooKeeper
+- **Observability:** Prometheus, Grafana, Splunk, OpenTelemetry, Jaeger
+- **Cloud:** AWS, GCP
 
-- MCP tool-call proxying
-- Policy-as-code for tool access
-- Risk scoring and approval tokens
-- Redaction of secrets and sensitive payloads
-- Kill switches and rate limits
-- Audit evidence for agent actions
-- OpenTelemetry/OpenInference-compatible traces
-- Adversarial safety evaluations
+## Open to
 
-**Keywords:** `MCP` `Model Context Protocol` `AI Agents` `LLMOps` `Agent Security` `Tool Calling` `Policy Engine` `Guardrails` `OpenTelemetry`
-
----
-
-### 2. [Sentinel](https://github.com/gaurav-gs7/Sentinel) — Kubernetes Reliability Platform
-
-> Kubernetes reliability platform focused on SLOs, rollout guards, production readiness, and incident automation.
-
-**What it demonstrates**
-
-- Kubernetes production-readiness checks
-- SLO and error-budget thinking
-- Progressive delivery and rollout safety
-- Canary and rollback workflows
-- Grafana/Alertmanager/OpenTelemetry integration
-- Terraform, Argo CD, Kustomize, and GitHub Actions patterns
-- Runbook and postmortem automation
-
-**Keywords:** `Kubernetes` `SRE` `Platform Engineering` `SLO` `Canary` `Progressive Delivery` `Terraform` `Argo CD` `GitOps` `Observability`
-
----
-
-### 3. [Argus](https://github.com/gaurav-gs7/Argus) — AI-Assisted SRE Control Plane
-
-> Production-style AIOps platform for incident detection, deterministic RCA, and policy-gated remediation.
-
-**What it demonstrates**
-
-- Alert ingestion and incident creation
-- Deterministic RCA before LLM explanation
-- Advisory-only LLM layer
-- Policy-gated remediation proposals
-- Typed and idempotent remediation handlers
-- PostgreSQL audit trail
-- NATS/Redis-backed infra workflow
-- Prometheus, Grafana, Loki, and OpenTelemetry integration
-
-**Positioning**
-
-```txt
-AI should not auto-fix production blindly.
-Argus investigates, explains, gates, audits, and only then remediates.
-```
-
-**Keywords:** `AIOps` `SRE` `Incident Response` `RCA` `Auto-Remediation` `Go` `Python` `PostgreSQL` `NATS` `Redis` `Prometheus` `Grafana` `OpenTelemetry`
-
----
-
-### 4. [Helios](https://github.com/gaurav-gs7/Helios) — Distributed Systems Learning / Deep-Dive
-
-> A learning and deep-dive project for studying distributed workflow mechanics—not a production-ready orchestration platform.
-
-**What it demonstrates**
-
-- DAG-based workflow execution
-- PostgreSQL as durable source of truth
-- NATS as transport
-- Worker registration and heartbeats
-- Lease-based scheduling
-- Retry/backoff and timeout recovery
-- Dead-worker recovery
-- At-least-once execution with idempotent handlers
-- AI-assisted planning and failure analysis
-
-**Positioning**
-
-```txt
-A hands-on deep dive into durable execution, worker coordination,
-scheduling, and failure recovery—not a production claim.
-```
-
-**Keywords:** `Distributed Systems` `Workflow Engine` `Task Orchestration` `Go` `PostgreSQL` `NATS` `Worker Pool` `Leases` `Heartbeats` `Retries` `AI Infra`
-
----
-
-### 5. [InferLab](https://github.com/gaurav-gs7/InferLab) — Release Checks for LLM Inference Changes
-
-I built InferLab because a benchmark can say that an inference change is faster
-without proving that the evidence is complete, comparable, or safe to release on.
-It checks that evidence first, then returns `PASS`, `BLOCK`, or `INCONCLUSIVE`.
-
-The parts I care about most are:
-
-- Versioned contracts that identify the exact model, runtime, workload, and policy
-- Freshness, compatibility, coverage, and sample-sufficiency checks
-- Loss-aware adapters with cryptographic provenance
-- Re-verification of the smallest workload known to reproduce a failure
-- Content-addressed safety cases that can be replayed and signed with Ed25519
-
-It is still pre-alpha. The public examples deliberately show `BLOCK` and
-`INCONCLUSIVE`; I do not claim a production `PASS` without real target-system
-evidence.
-
-**Keywords:** `AI Infrastructure` `LLM Inference` `Release Assurance` `Reliability` `Go` `Evidence Contracts` `Policy Gates` `Ed25519`
-
----
-
-## 🛠️ Tech Stack
-
-<div align="center">
-
-### Languages
-<img src="https://skillicons.dev/icons?i=go,python,bash" />
-
-### Infra / Platform
-<img src="https://skillicons.dev/icons?i=docker,kubernetes,terraform,githubactions,nginx,linux" />
-
-### Data / Messaging
-<img src="https://skillicons.dev/icons?i=postgres,redis,kafka,rabbitmq" />
-
-### Cloud / DevOps
-<img src="https://skillicons.dev/icons?i=aws,gcp,git,github,vscode" />
-
-</div>
-
----
-
-## 🤝 Open To
-
-- SRE / Production Engineering roles
-- Platform Engineering roles
-- System Development Engineer roles
-- AI Infrastructure / AIOps / LLMOps roles
-- Teams building reliability platforms, observability systems, agent infrastructure, or production automation
-
----
-
-<div align="center">
-
-### Building systems where AI helps operators move faster — safely.
-
-<img src="https://capsule-render.vercel.app/api?type=waving&height=110&color=0:14B8A6,50:1E40AF,100:0F172A&section=footer" />
-
-</div>
+SRE, platform engineering and AI-infrastructure roles, remote or hybrid in Bengaluru.
