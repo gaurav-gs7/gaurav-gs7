@@ -17,7 +17,7 @@ Senior SRE at **Mastercard**, previously **PhonePe**. Four years running infrast
 
 <table>
   <tr>
-    <td width="50%"><a href="https://github.com/gaurav-gs7/Judikt"><img src="assets/card-judikt.svg" width="100%" alt="Judikt: security gateway for AI agents using MCP. v0.3.0 on PyPI."></a></td>
+    <td width="50%"><a href="https://github.com/gaurav-gs7/Judikt"><img src="assets/card-judikt.svg" width="100%" alt="Judikt: security gateway for AI agents using MCP. v0.4.0 on PyPI."></a></td>
     <td width="50%"><a href="https://github.com/gaurav-gs7/Argus"><img src="assets/card-argus.svg" width="100%" alt="Argus: incident correlation and root-cause analysis with AI kept advisory."></a></td>
   </tr>
   <tr>
