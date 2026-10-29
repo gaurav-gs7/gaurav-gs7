@@ -306,7 +306,7 @@ def glyph_inferlab():
 
 def cards():
     card("Judikt", "card-judikt.svg", ["Security gateway for AI agents using MCP.", "Policy, identity and approvals on every", "tool call, with a hash-chained audit trail."],
-         "Python · MCP · OIDC · Redis · OTel", "v0.3.0 · PyPI", MINT, glyph_judikt())
+         "Python · MCP · OIDC · Redis · OTel", "v0.4.0 · PyPI", MINT, glyph_judikt())
     card("Argus", "card-argus.svg", ["Incident correlation and root-cause", "analysis. Deterministic scoring first;", "the LLM only explains."],
          "Go · PostgreSQL · NATS · OTel", "AIOps", IND, glyph_argus())
     card("Helios", "card-helios.svg", ["Durable DAG workflow engine that survives", "crashes mid-run: leases, heartbeats,", "retries and dead-worker recovery."],
@@ -330,7 +330,7 @@ def career():
         ("phonepe", "sre-1 · UPI PSP infrastructure", 2022 + 7 / 12, 2025 + 3 / 12, IND, "2 yrs 9 mos",
          [(2022.95, "mesos → drove"), (2023.85, "dc migration"), (2024.75, "backups −33%")]),
         ("mastercard", "sre-2 · banking platform", 2025 + 3 / 12, NOW, MINT, "1 yr 6 mos · now", [(2025.75, "release automation")]),
-        ("open-source", "ai-sre platform", 2026.0, NOW, AMB, "argus · judikt · helios", [(2026.72, "judikt v0.3.0")]),
+        ("open-source", "ai-sre platform", 2026.0, NOW, AMB, "argus · judikt · helios", [(2026.72, "judikt v0.4.0")]),
     ]
     ROW0, RH = 96, 40
     body = [f'<text x="40" y="38" class="mono" font-size="12.5" fill="{FAINT}">trace</text>',
